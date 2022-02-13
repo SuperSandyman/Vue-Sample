@@ -8,24 +8,21 @@
 </head>
 <body>
     <script src="https://unpkg.com/vue@next"></script>
-    <div id="counter">
-        Counter: {{ counter }}
+    <div id="app">
+        <span v-bind:title="message">
+            この文字列にマウスオーバーしてください！
+        </span>
     </div>
     <script>
-        const Counter = {
+        const appdate = {
             data() {
                 return {
-                    counter: 0
+                    message: "あなたがこのページを読み込んだのは" + new Date().toLocaleString() + "です！",
                 }
-            },
-            mounted() {
-                setInterval(() => {
-                    this.counter++
-                }, 1000)
             }
         }
 
-        Vue.createApp(Counter).mount('#counter')
+        let app = Vue.createApp(appdate).mount('#app')
     </script>
 </body>
 </html>
