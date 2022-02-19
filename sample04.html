@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+    <div id="computed-basics">
+        <p>Has published books:</p>
+        <span>{{ publishedBooksMessage }}</span>
+    </div>
+    <script>
+        Vue.createApp({
+            data() {
+                return {
+                    author: {
+                        name: 'John Doe',
+                        books: [
+                        'Vue 2 - Advanced Guide',
+                        'Vue 3 - Basic Guide',
+                        'Vue 4 - The Mystery'
+                        ]
+                    }
+                }
+            },
+            computed: {
+            // 算出 getter 関数
+                publishedBooksMessage() {
+                    // `this` は vm インスタンスを指す
+                    return this.author.books.length > 0 ? 'Yes' : 'No'
+                }
+            }
+        }).mount('#computed-basics')
+    </script>
+</body>
+</html>
